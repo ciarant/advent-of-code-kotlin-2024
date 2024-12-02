@@ -1,8 +1,11 @@
+import kotlin.math.absoluteValue
+
 fun main() {
 
     fun splitLists(input: List<String>): Pair<List<Int>, List<Int>> =
         input.mapNotNull { line ->
-            line.split(' ').filter { it.isNotEmpty() }.takeIf { it.size == 2 }?.let { it[0].toInt() to it[1].toInt() }
+            line.split(' ').filter { it.isNotEmpty() }.takeIf { it.size == 2 }
+                ?.let { it[0].toInt() to it[1].toInt() }
         }.unzip()
 
     fun part1(input: List<String>): Int {

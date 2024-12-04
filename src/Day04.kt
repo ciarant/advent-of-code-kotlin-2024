@@ -31,7 +31,7 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        // Order in each String: Northwest, Northeast, Southwest, Southeast
+        // Order in each String: Northwest, Northeast, Southeast, Southwest
         val patterns = listOf("SSMM", "SMMS", "MMSS", "MSSM")
 
         return (1 until input.size - 1).sumOf { row ->
@@ -39,10 +39,10 @@ fun main() {
                 // For each occurrence of 'A', check if its diagonal neighbours match a desired pattern
                 input[row][col] == 'A' &&
                         listOf(
-                            input[row - 1][col - 1],
-                            input[row - 1][col + 1],
-                            input[row + 1][col + 1],
-                            input[row + 1][col - 1]
+                            input[row - 1][col - 1], // Northwest
+                            input[row - 1][col + 1], // Northeast
+                            input[row + 1][col + 1], // Southeast
+                            input[row + 1][col - 1]  // Southwest
                         ).joinToString("") in patterns
             }
         }

@@ -1,6 +1,9 @@
 import java.io.File
 
 fun main() {
+    data class Rule(val pageBefore: Int, val pageAfter: Int)
+
+    data class Update(val pages: List<Int>)
 
     fun parseFile(fileName: String): Pair<List<Rule>, List<Update>> {
         val lines = File(fileName).readLines().filter { it.isNotBlank() }
@@ -15,7 +18,7 @@ fun main() {
     fun createDependenciesMap(rules: List<Rule>): Map<Int, Set<Int>> {
         val dependencies = mutableMapOf<Int, MutableSet<Int>>()
         rules.forEach { rule ->
-            dependencies.computeIfAbsent(rule.after) { mutableSetOf() }.add(rule.before)
+            dependencies.computeIfAbsent(rule.pageAfter) { mutableSetOf() }.add(rule.pageBefore)
         }
         return dependencies
     }

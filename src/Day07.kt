@@ -1,5 +1,8 @@
 import java.io.File
 
+/**
+ * [Bridge Repair](https://adventofcode.com/2024/day/7)
+ */
 fun main() {
 
     fun parseEquations(input: List<String>): List<Pair<Long, List<Int>>> =

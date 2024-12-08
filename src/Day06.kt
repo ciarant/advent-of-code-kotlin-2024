@@ -6,6 +6,9 @@ sealed class Result {
     data object StuckInLoop : Result()
 }
 
+/**
+ * [Guard Gallivant](https://adventofcode.com/2024/day/6)
+ */
 fun main() {
 
     class Grid(private val input: List<String>) {

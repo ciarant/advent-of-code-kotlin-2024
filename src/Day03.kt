@@ -1,5 +1,8 @@
 import java.io.File
 
+/**
+ * [Mull It Over](https://adventofcode.com/2024/day/3)
+ */
 fun main() {
 
     fun part1(input: String): Int =

@@ -33,6 +33,9 @@ class AntennaGrid(input: List<String>) {
         x in 0 until width && y in 0 until height
 }
 
+/**
+ * [Resonant Collinearity](https://adventofcode.com/2024/day/8)
+ */
 fun main() {
 
     fun part1(input: List<String>): Int {

@@ -1,5 +1,8 @@
 import kotlin.math.absoluteValue
 
+/**
+ * [Historian Hysteria](https://adventofcode.com/2024/day/1)
+ */
 fun main() {
 
     fun splitLists(input: List<String>): Pair<List<Int>, List<Int>> =

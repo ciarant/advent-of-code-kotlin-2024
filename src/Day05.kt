@@ -1,5 +1,8 @@
 import java.io.File
 
+/**
+ * [Print Queue](https://adventofcode.com/2024/day/5)
+ */
 fun main() {
     data class Rule(val pageBefore: Int, val pageAfter: Int)
 

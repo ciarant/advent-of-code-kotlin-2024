@@ -1,5 +1,8 @@
 import kotlin.math.absoluteValue
 
+/**
+ * [Red-Nosed Reports](https://adventofcode.com/2024/day/2)
+ */
 fun main() {
 
     fun extractReports(input: List<String>) = input.map { line ->

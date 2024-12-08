@@ -8,7 +8,7 @@ sealed class Result {
 
 fun main() {
 
-    class Grid(val input: List<String>) {
+    class Grid(private val input: List<String>) {
         private val grid: Array<CharArray> = input.map { it.toCharArray() }.toTypedArray()
         private val directions = listOf(
             Pair(-1, 0),  // up

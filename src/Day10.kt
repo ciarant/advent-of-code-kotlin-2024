@@ -4,7 +4,7 @@ data class Position(val x: Int, val y: Int) {
             Pair(-1, 0), Pair(1, 0), Pair(0, -1), Pair(0, 1)
         )
     }
-    fun neighbors(): List<Position> =
+    fun neighbours(): List<Position> =
         directions.map { (dx, dy) -> Position(x + dx, y + dy) }
 
     fun isInBounds(rows: Int, cols: Int): Boolean =
@@ -28,7 +28,7 @@ fun main() {
         while (queue.isNotEmpty()) {
             val current = queue.removeFirst()
 
-            current.neighbors()
+            current.neighbours()
                 .filter { it.isInBounds(rows, cols) && it !in visited }
                 .filter { grid[it.x][it.y] - grid[current.x][current.y] == 1 }
                 .forEach {
@@ -53,7 +53,7 @@ fun main() {
 
         var trails = 0
 
-        current.neighbors()
+        current.neighbours()
             .filter { it.isInBounds(rows, cols) }
             .filter { it !in path } // Don't revisit positions in the current path
             .filter { grid[it.x][it.y] - grid[current.x][current.y] == 1 } // Uphill

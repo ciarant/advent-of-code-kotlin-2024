@@ -1,12 +1,10 @@
-import kotlin.math.absoluteValue
-
 /**
  * [Red-Nosed Reports](https://adventofcode.com/2024/day/2)
  */
 fun main() {
 
     fun extractReports(input: List<String>) = input.map { line ->
-        line.split(" ").map { it.toInt() }
+        line.split(" ").map(String::toInt)
     }
 
     fun isReportSafe(report: List<Int>): Boolean =
@@ -20,17 +18,9 @@ fun main() {
             isReportSafe(report.filterIndexed { i, _ -> i != index })
         }
 
-    fun part1(input: List<String>): Int {
-        val reports = extractReports(input)
+    fun part1(input: List<String>) = extractReports(input).count(::isReportSafe)
 
-        return reports.count(::isReportSafe)
-    }
-
-    fun part2(input: List<String>): Int {
-        val reports = extractReports(input)
-
-        return reports.count(::isReportSafeWithDampener)
-    }
+    fun part2(input: List<String>) = extractReports(input).count(::isReportSafeWithDampener)
 
     // Tests
     val testInput = readInput("Day02_test")

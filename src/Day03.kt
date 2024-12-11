@@ -25,12 +25,12 @@ fun main() {
             }.second
 
     // Tests
-    val testInput1 = File("src/Day03_test1.txt").readText()
+    val testInput1 = readInput("Day03_test1").first()
     check(part1(testInput1) == 161)
-    val testInput2 = File("src/Day03_test2.txt").readText()
+    val testInput2 = readInput("Day03_test2").first()
     check(part2(testInput2) == 48)
 
-    val input = File("src/Day03.txt").readText()
+    val input = readInput("Day03").first()
     part1(input).println()
     part2(input).println()
 }

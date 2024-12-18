@@ -1,5 +1,8 @@
 import java.util.*
 
+/**
+ * [RAM Run](https://adventofcode.com/2024/day/18)
+ */
 fun main() {
     data class Point(val x: Int, val y: Int)
     val directions = listOf(

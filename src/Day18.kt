@@ -5,6 +5,7 @@ import java.util.*
  */
 fun main() {
     data class Point(val x: Int, val y: Int)
+
     val directions = listOf(
         Point(0, 1),
         Point(1, 0),
@@ -21,10 +22,7 @@ fun main() {
 
         while (queue.isNotEmpty()) {
             val (current, stepCount) = queue.poll()
-
-            if (current == end) {
-                return stepCount
-            }
+            if (current == end) return stepCount
 
             for (dir in directions) {
                 val nextX = current.x + dir.x
@@ -40,22 +38,17 @@ fun main() {
         return -1
     }
 
-    fun generateGrid(size: Int, corruptPoints: List<Point> = emptyList()): Array<BooleanArray> {
-        val grid = Array(size) { BooleanArray(size) }
-        for ((i, point) in corruptPoints.withIndex()) {
-            grid[point.y][point.x] = true
+    fun generateGrid(size: Int, corruptPoints: List<Point> = emptyList()): Array<BooleanArray> =
+        Array(size) { BooleanArray(size) }.apply {
+            corruptPoints.forEach { (x, y) -> this[y][x] = true }
         }
 
-        return grid
-    }
-
     fun parseInput(input: List<String>) = input.map { line ->
-        val (x, y) = line.split(",").map { it.trim().toInt() }
-        Point(x, y)
+        line.split(",").map(String::trim).let { (x, y) -> Point(x.toInt(), y.toInt()) }
     }
 
     fun part1(input: List<String>, gridSize: Int, corruptCount: Int): Int {
-        val points = parseInput(input).subList(0, corruptCount)
+        val points = parseInput(input).take(corruptCount)
         val grid = generateGrid(gridSize, points)
 
         return findShortestPath(grid, Point(0, 0), Point(gridSize - 1, gridSize - 1))
@@ -67,12 +60,9 @@ fun main() {
         val start = Point(0, 0)
         val end = Point(gridSize - 1, gridSize - 1)
 
-        for ((index, point) in points.withIndex()) {
+        points.forEach { point ->
             grid[point.y][point.x] = true
-
-            if (findShortestPath(grid, start, end) == -1) {
-                return "${point.x},${point.y}"
-            }
+            if (findShortestPath(grid, start, end) == -1) return "${point.x},${point.y}"
         }
         return "No solution found"
     }

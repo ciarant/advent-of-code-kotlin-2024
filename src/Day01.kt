@@ -14,16 +14,17 @@ fun main() {
         val (leftList, rightList) = splitLists(input)
 
         val totalDistance = leftList.sorted().zip(rightList.sorted())
-            .sumOf { (left, right) -> kotlin.math.abs(left - right) }
+            .sumOf { (left, right) -> (left - right).absoluteValue }
 
-        return totalDistance;
+        return totalDistance
     }
 
     fun part2(input: List<String>): Int {
         val (leftList, rightList) = splitLists(input)
+        val rightCounts = rightList.groupingBy { it }.eachCount()
 
         return leftList.sumOf { left ->
-            left * rightList.count { it == left }
+            left * (rightCounts[left] ?: 0)
         }
     }
 

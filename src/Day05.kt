@@ -61,9 +61,7 @@ fun main() {
     }
 
     fun part1(rules: List<Rule>, updates: List<Update>, dependencies: Map<Int, Set<Int>>): Int =
-        updates.filter { isValidUpdate(it, dependencies) }
-            .map { middleNumber(it.pages) }
-            .sum()
+        updates.filter { isValidUpdate(it, dependencies) }.sumOf { middleNumber(it.pages) }
 
     fun part2(rules: List<Rule>, updates: List<Update>, dependencies: Map<Int, Set<Int>>): Int =
         updates

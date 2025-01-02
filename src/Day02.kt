@@ -7,13 +7,13 @@ fun main() {
         line.split(" ").map(String::toInt)
     }
 
-    fun isReportSafe(report: List<Int>): Boolean =
+    fun isReportSafe(report: List<Int>) =
         report.zipWithNext { a, b -> b - a }
             .let { differences ->
                 differences.all { it in 1..3 } || differences.all { it in -3..-1 }
             }
 
-    fun isReportSafeWithDampener(report: List<Int>): Boolean =
+    fun isReportSafeWithDampener(report: List<Int>) =
         isReportSafe(report) || report.indices.any { index ->
             isReportSafe(report.filterIndexed { i, _ -> i != index })
         }
